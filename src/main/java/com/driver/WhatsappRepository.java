@@ -30,12 +30,13 @@ public class WhatsappRepository {
         //Otherwise, create the user and return "SUCCESS"
 
         User user = new User();
-        user.setName(name);
-        if(user_db.get(user).getMobile() == mobile){
+        if( !user_db.isEmpty()||user_db.get(user).getMobile() == mobile){
 
             throw new Exception("User already exists");
 
         }
+
+        user.setName(name);
         user.setMobile(mobile);
         user_db.put(name, user);
 
