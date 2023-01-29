@@ -60,7 +60,7 @@ public class WhatsappRepository {
         // Return the message id.
 
         Message message = new Message();
-        int id = 1;
+        int id = 2;
         id++;
         message.setId(id);
         message.setContent(content);
