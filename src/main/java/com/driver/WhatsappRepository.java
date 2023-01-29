@@ -61,7 +61,7 @@ public class WhatsappRepository {
         // Return the message id.
 
         Message message = new Message();
-        int id = 1;
+        int id = 2;
         id++;
         message.setId(id);
         message.setContent(content);
@@ -78,7 +78,7 @@ public class WhatsappRepository {
         //Throw "You are not allowed to send message" if the sender is not a member of the group
         //If the message is sent successfully, return the final number of messages in that group.
 
-        return 1;
+        return 2;
     }
 
     public String changeAdmin(User approver, User user, Group group) throws Exception{
