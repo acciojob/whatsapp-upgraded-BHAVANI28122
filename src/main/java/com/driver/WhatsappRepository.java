@@ -3,17 +3,43 @@ package com.driver;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Repository
 public class WhatsappRepository {
 
 
+    HashMap<String,User> user_db = new HashMap<>();
+    HashMap<String, List<User>> group_db = new HashMap<>();
+    HashMap<Integer,Message> message_db = new HashMap<>();
+
+    public WhatsappRepository(){
+
+    }
+    public WhatsappRepository(HashMap<String, User> user_db, HashMap<String, List<User>> group_db, HashMap<Integer, Message> message_db) {
+        this.user_db = user_db;
+        this.group_db = group_db;
+        this.message_db = message_db;
+    }
+
+
+
     public String createUser(String name, String mobile) throws Exception {
         //If the mobile number exists in database, throw "User already exists" exception
         //Otherwise, create the user and return "SUCCESS"
 
-        return null;
+        User user = new User();
+        user.setName(name);
+        if(user_db.get(user).getMobile() == mobile){
+
+            throw new Exception("User already exists");
+
+        }
+        user.setMobile(mobile);
+        user_db.put(name, user);
+
+        return "SUCCESS";
     }
 
     public Group createGroup(List<User> users){
@@ -33,7 +59,16 @@ public class WhatsappRepository {
         // The 'i^th' created message has message id 'i'.
         // Return the message id.
 
-        return 0;
+        Message message = new Message();
+        int id = 1;
+        id++;
+        message.setId(id);
+        message.setContent(content);
+        message.setTimestamp(new Date());
+
+
+        return message.getId();
+
     }
 
 
